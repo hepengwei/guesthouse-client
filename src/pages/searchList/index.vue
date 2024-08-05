@@ -37,7 +37,7 @@
             <text class="price">￥{{ record.price }}</text>
           </view>
         </view>
-        <MyLoadingMore :loading="loading" :hasMore="hasMore" />
+        <MyLoadingMore :loading="loading" :hasMore="hasMore" :page="page" />
       </template>
       <MyNoData v-else-if="!loading" />
     </scroll-view>

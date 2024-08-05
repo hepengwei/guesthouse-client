@@ -43,10 +43,10 @@
         <text class="title">评论</text>
         <view class="list" v-if="detail?.comments?.length > 0">
           <view class="item" v-for="(comment, index) in detail?.comments" :key="index">
-            <image class="img" :src="comment.userInfo.avatar" mode="aspectFill" />
+            <image class="img" :src="comment.userInfo?.avatar || ''" mode="aspectFill" />
             <view class="right">
               <view class="top">
-                <text class="userName">{{ comment.userInfo.userName }}</text>
+                <text class="userName">{{ comment.userInfo?.userName || '' }}</text>
                 <text class="time">{{ comment.createdAt }}</text>
               </view>
               <text class="text ellipsis">{{ comment.msg }}</text>

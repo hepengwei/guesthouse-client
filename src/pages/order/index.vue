@@ -18,22 +18,25 @@
       :lower-threshold="50"
       @scrolltolower="getDataList(page + 1)"
     >
-      <view class="item" v-for="record in dataList" :key="record.id">
-        <image class="img" :src="record.guesthouseInfo.imgs[0]?.url" mode="aspectFill" />
-        <view class="middle">
-          <text class="name">{{ record.guesthouseInfo.name }}</text>
-          <text class="price">￥{{ record.guesthouseInfo.price }}</text>
+      <template v-if="dataList?.length > 0">
+        <view class="item" v-for="record in dataList" :key="record.id">
+          <image class="img" :src="record.guesthouseInfo.imgs[0]?.url" mode="aspectFill" />
+          <view class="middle">
+            <text class="name">{{ record.guesthouseInfo.name }}</text>
+            <text class="price">￥{{ record.guesthouseInfo.price }}</text>
+          </view>
+          <button
+            v-if="!record.isPayed"
+            class="myBtn"
+            style="width: 80px"
+            @click="onPayOrder(record.id)"
+          >
+            去支付
+          </button>
         </view>
-        <button
-          v-if="!record.isPayed"
-          class="myBtn"
-          style="width: 80px"
-          @click="onPayOrder(record.id)"
-        >
-          去支付
-        </button>
-      </view>
-      <MyLoadingMore :loading="loading" :hasMore="hasMore" />
+        <MyLoadingMore :loading="loading" :hasMore="hasMore" :page="page" />
+      </template>
+      <MyNoData v-else />
     </scroll-view>
   </view>
 </template>

@@ -15,6 +15,11 @@
       </uni-forms-item>
     </uni-forms>
     <button class="myBtn btn" @click="onSubmit">登录</button>
+    <view class="registBtnBox">
+      <button class="registBtn primaryColor" :plain="true" size="mini" @click="goRegist">
+        去注册&gt;
+      </button>
+    </view>
   </view>
 </template>
 
@@ -34,6 +39,10 @@ const rules = ref({
     rules: [{ required: true, errorMessage: '请填写密码' }],
   },
 })
+
+const goRegist = () => {
+  uni.redirectTo({ url: '/pages/regist/index' })
+}
 
 const onSubmit = async () => {
   if (formRef.value) {
@@ -112,7 +121,19 @@ const onSubmit = async () => {
   .btn {
     width: 94%;
     height: 84rpx;
-    margin: 40rpx auto;
+    margin: 40rpx auto 20rpx;
+  }
+
+  .registBtnBox {
+    width: 100%;
+    position: relative;
+    .registBtn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: none;
+      font-size: 14px;
+    }
   }
 }
 </style>
