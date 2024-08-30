@@ -3,7 +3,7 @@
     <text class="title">最热民宿</text>
     <view class="list" v-if="dataList?.length > 0">
       <view class="listItem" v-for="item in dataList" :key="item.id" @click="onClickItem(item.id)">
-        <image class="img" :src="item.imgs.length > 0 ? item.imgs[0].url : ''" mode="aspectFill" />
+        <image class="img" :src="item.imgs?.length > 0 ? item.imgs[0].url : ''" mode="aspectFill" />
         <text class="name">{{ item.name }}</text>
         <text class="des ellipsis">{{ item.des }}</text>
         <text class="price">￥{{ item.price }}</text>
